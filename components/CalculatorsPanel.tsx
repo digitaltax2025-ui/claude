@@ -6,6 +6,7 @@ import EmployeeVsFreelancerCalculator from "./calculators/EmployeeVsFreelancerCa
 import ReserveDutyCalculator from "./calculators/ReserveDutyCalculator";
 import MaternityCalculator from "./calculators/MaternityCalculator";
 import TerminationCalculator from "./calculators/TerminationCalculator";
+import AssumptionsPanel from "./calculators/AssumptionsPanel";
 
 const TABS = [
   { id: "grossNet", label: "ברוטו → נטו", Component: GrossNetCalculator },
@@ -24,7 +25,18 @@ export default function CalculatorsPanel() {
   const ActiveComponent = TABS.find((t) => t.id === active)!.Component;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 space-y-4">
+      <div>
+        <h2 className="font-semibold text-slate-800">כלי חישוב — טיוטה בלבד</h2>
+        <p className="text-xs text-slate-500 mt-0.5">
+          רכיב ניסיוני בשלב מוקדם (ראו "מנועי חישוב" ב-
+          <code>docs/agent-brief.md</code>). מציג נוסחה והנחות בלבד, לא
+          תוצאה מאומתת לשימוש בתיק.
+        </p>
+      </div>
+
+      <AssumptionsPanel />
+
       <div className="flex flex-wrap gap-2 mb-4 border-b border-slate-200 pb-3">
         {TABS.map((t) => (
           <button
